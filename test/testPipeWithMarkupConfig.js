@@ -12,6 +12,7 @@
 /* eslint-env mocha */
 const assert = require('assert');
 const { logging } = require('@adobe/helix-testutils');
+const { VersionLock } = require('@adobe/openwhisk-action-utils');
 const nock = require('nock');
 const { pipe } = require('../src/defaults/html.pipe.js');
 const coerce = require('../src/utils/coerce-secrets');
@@ -106,6 +107,7 @@ describe('Testing HTML Pipeline with markup config', () => {
       },
       secrets: {},
       logger,
+      versionLock: new VersionLock(),
     });
     nock.restore();
     nock.activate();
